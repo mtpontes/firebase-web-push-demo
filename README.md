@@ -1,52 +1,59 @@
 # Firebase Cloud Messaging (FCM) Client
 
-Este projeto é um cliente web simples para demonstrar e testar o recebimento de notificações push usando Firebase Cloud Messaging (FCM). Ele foi desenvolvido com Vite e Firebase JS SDK.
+This project is a simple web client to demonstrate and test receiving push notifications using Firebase Cloud Messaging (FCM). It was built with Vite and Firebase JS SDK.
 
-## Funcionalidades
+## Features
 
-- **Gerar Token de Registro**: Obtém o token FCM para o dispositivo atual, necessário para enviar notificações.
-- **Recebimento de Notificações**:
-  - **Foreground (Primeiro plano)**: Exibe a mensagem diretamente na página quando o app está aberto.
-  - **Background (Segundo plano)**: Exibe uma notificação do sistema via Service Worker (`firebase-messaging-sw.js`).
+- **Generate Registration Token**: Obtains the FCM token for the current device, required to send notifications.
+- **Receive Notifications**:
+  - **Foreground**: Displays the message directly on the page when the app is open.
+  - **Background**: Displays a system notification via Service Worker (`firebase-messaging-sw.js`).
 
-## Pré-requisitos
+## Prerequisites
 
-- Node.js instalado (versão 14+ recomendada).
-- Navegador com suporte a Push API (Chrome, Firefox, Edge, etc.).
+- Node.js installed (version 14+ recommended).
+- Browser with Push API support (Chrome, Firefox, Edge, etc.).
 
-## Configuração
+## Setup
 
-1. Clone o repositório.
-2. Instale as dependências:
+1. Clone the repository.
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Configure o Firebase:
-    - O projeto já possui credenciais configuradas em `main.js` e `firebase-messaging-sw.js`.
-    - **Nota**: Se precisar alterar o projeto Firebase, atualize a constante `firebaseConfig` em ambos os arquivos.
+3. Create a `.env` file in the project root with your Firebase credentials:
+   ```env
+   VITE_FIREBASE_API_KEY=your-api-key
+   VITE_FIREBASE_AUTH_DOMAIN=your-auth-domain
+   VITE_FIREBASE_PROJECT_ID=your-project-id
+   VITE_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+   VITE_FIREBASE_APP_ID=your-app-id
+   ```
 
-## Como Executar
+## How to Run
 
-Para iniciar o servidor de desenvolvimento:
+To start the development server:
 
 ```bash
 npm run dev
 ```
 
-O aplicativo estará disponível (geralmente) em `http://localhost:5173`.
+The application will generally be available at `http://localhost:5173`.
 
-## Uso
+## Usage
 
-1. Abra a aplicação no navegador.
-2. Clique no botão "Request Permission" (se houver) ou aguarde a solicitação de permissão de notificação.
-3. Permita as notificações no navegador.
-4. Copie o "Token" exibido na tela.
-5. Use o console do Firebase ou uma ferramenta de teste de API (como Postman/cURL) para enviar uma notificação para este token.
+1. Open the application in your browser.
+2. Click the "Request Permission" button (if available) or wait for the notification permission prompt.
+3. Allow notifications in your browser.
+4. Copy the "Token" displayed on the screen.
+5. Use the Firebase Console or an API testing tool (like Postman/cURL) to send a notification to this token.
 
-### Estrutura de Arquivos
+### File Structure
 
-- `main.js`: Lógica principal da aplicação, inicialização do Firebase e manipulador de mensagens em primeiro plano (`onMessage`).
-- `firebase-messaging-sw.js`: Service Worker para lidar com mensagens em segundo plano.
-- `index.html`: Estrutura HTML da página.
+- `main.js`: Main application logic, Firebase initialization, and foreground message handler (`onMessage`).
+- `firebase-messaging-sw.js`: Service Worker to handle background messages.
+- `index.html`: HTML structure of the page.
+- `README.pt-br.md`: Portuguese version of this documentation.
